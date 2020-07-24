@@ -37,7 +37,7 @@
             app:layout_constraintVertical_bias="0.045" />
 
         <TextView
-            android:id="@+id/signup"
+            android:id="@+id/txtSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/medium"
@@ -132,7 +132,7 @@
             tools:fontFamily="@font/regular" />
 
         <Button
-            android:id="@+id/btnlogin"
+            android:id="@+id/btnSignIN_lo"
             android:layout_width="94dp"
             android:layout_height="36dp"
             android:layout_marginBottom="16dp"

@@ -12,11 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.actvn.shopapp.MainActivity;
 import com.actvn.shopapp.R;
 import com.actvn.shopapp.api.model.Login;
 import com.actvn.shopapp.api.model.ResultLogin;
 import com.actvn.shopapp.api.service.UserService;
 import com.actvn.shopapp.login.logout.LogoutActivity;
+import com.actvn.shopapp.register.RegisterActivity;
 import com.actvn.shopapp.utils.ConstApp;
 import com.actvn.shopapp.utils.ShareStoreUtils;
 
@@ -29,10 +31,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+
     private UserService userServic;
     private EditText edtEmail, edtPass;
     private TextView txtDismiss;
-    private Button btn_Login;
+    private TextView txtSignUp;
+    private Button btnSignIN;
 
     LinearLayout lnWrong;
 
@@ -60,22 +64,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //khoi tao phuong thuc trong userservice
         userServic = retrofit.create(UserService.class);
         innit();
-        btn_Login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
     }
 
     public void innit() {
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtPass = (EditText) findViewById(R.id.edtPass);
-        btn_Login = (Button) findViewById(R.id.btnlogin);
+        btnSignIN = (Button) findViewById(R.id.btnSignIN_lo);
+        txtSignUp = findViewById(R.id.txtSignUp);
+
         txtDismiss = findViewById(R.id.txtDismiss);
         lnWrong = findViewById(R.id.lnWrong);
 
-       // btn_Login.setOnClickListener(this);
+        btnSignIN.setOnClickListener(this);
+        txtSignUp.setOnClickListener(this);
         txtDismiss.setOnClickListener(this);
     }
 
@@ -110,18 +111,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void startMainActivity() {
         Intent intent = new Intent();
-        intent.setClass(this, LogoutActivity.class);
+        intent.setClass(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.txtDismiss:
                 lnWrong.setVisibility(View.INVISIBLE);
                 break;
-
+            case R.id.btnSignIN_lo:
+                login();
+                break;
+            case R.id.txtSignUp:
+                Intent intent = new Intent(this, RegisterActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }

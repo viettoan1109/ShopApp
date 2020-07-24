@@ -1,4 +1,4 @@
-package info.androidhive.viewpager2.transformers;
+package com.actvn.shopapp.transformers;
 
 import android.os.Build;
 import android.view.View;

@@ -4,6 +4,7 @@ package com.actvn.shopapp.api.service;
 import com.actvn.shopapp.api.model.Login;
 import com.actvn.shopapp.api.model.Register;
 import com.actvn.shopapp.api.model.ResultLogin;
+import com.actvn.shopapp.api.model.ResultProduct;
 import com.actvn.shopapp.api.model.ResultRegister;
 
 import okhttp3.ResponseBody;
@@ -25,5 +26,9 @@ public interface UserService {
 
     @GET("/public/api/auth/user")
     Call<ResponseBody> getSecret(@Header("Authorization") String access_token);
+
+    @GET("/public/api/products")
+    Call<ResultProduct> getProduct (@Body ResultProduct resultProduct);
+
 
 }

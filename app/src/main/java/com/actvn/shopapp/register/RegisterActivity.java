@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actvn.shopapp.R;
@@ -26,10 +27,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private UserService userServic;
-    private EditText edtFirtName,edtEmailR,edtPassR,edtAdressR,edtPhoneR;
+    private EditText edtFirtName, edtEmailR, edtPassR, edtAdressR, edtPhoneR;
+    private TextView txtSignIn_re;
     private Button resiter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,35 +50,27 @@ public class RegisterActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         userServic = retrofit.create(UserService.class);
-        resiter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    register();
 
-            }
-        });
     }
-    private  static String name;
-    public  void register()
-    {
+
+    private static String name;
+
+    public void register() {
         String firtname = edtFirtName.getText().toString().trim();
         String email = edtEmailR.getText().toString().trim();
         String pass = edtPassR.getText().toString().trim();
         String address = edtAdressR.getText().toString().trim();
         String phone = edtPhoneR.getText().toString().trim();
-        Register register = new Register(firtname,email,pass,address,phone);
+        Register register = new Register(firtname, email, pass, address, phone);
         Call<ResultRegister> call = userServic.create(register);
         call.enqueue(new Callback<ResultRegister>() {
             @Override
-            public void onResponse(Call<ResultRegister> call,  Response<ResultRegister> response) {
-                if(response.isSuccessful() )
-                {
+            public void onResponse(Call<ResultRegister> call, Response<ResultRegister> response) {
+                if (response.isSuccessful()) {
                     name = response.body().getFirstName();
-                    Toast.makeText(RegisterActivity.this,name + " Đã được tạo thành công",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, name + " Đã được tạo thành công", Toast.LENGTH_SHORT).show();
                     login();
-                }
-                else
-                {
+                } else {
                     Toast.makeText(RegisterActivity.this, "khong ket noi hoac tk da ton tai", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -88,19 +83,37 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
-    public void innit()
-    {
+
+    public void innit() {
         edtFirtName = (EditText) findViewById(R.id.edtFirtname);
         edtEmailR = (EditText) findViewById(R.id.edtEmailRegister);
         edtPassR = (EditText) findViewById(R.id.edtPassR);
-        edtAdressR  = (EditText) findViewById(R.id.edtAdressR);
+        edtAdressR = (EditText) findViewById(R.id.edtAdressR);
         edtPhoneR = (EditText) findViewById(R.id.edtPhoneR);
         resiter = (Button) findViewById(R.id.btnRegister);
+        txtSignIn_re = findViewById(R.id.txtSignIn_re);
+
+        txtSignIn_re.setOnClickListener(this);
+        resiter.setOnClickListener(this);
     }
 
-    public void login(){
+    public void login() {
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnRegister:
+                register();
+                break;
+
+            case R.id.txtSignIn_re:
+                login();
+                break;
+        }
+
     }
 }
