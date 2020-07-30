@@ -1,11 +1,14 @@
 package com.actvn.shopapp.api.service;
 
 
+import com.actvn.shopapp.api.model.Data;
 import com.actvn.shopapp.api.model.Login;
+import com.actvn.shopapp.api.model.Products;
 import com.actvn.shopapp.api.model.Register;
 import com.actvn.shopapp.api.model.ResultLogin;
-import com.actvn.shopapp.api.model.ResultProduct;
 import com.actvn.shopapp.api.model.ResultRegister;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -13,22 +16,34 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface UserService {
 
-    @POST("/public/api/auth/login")
+    @POST("api/auth/login")
     Call<ResultLogin> login(@Body Login login);
 
-    @POST("/public/api/auth/create")
+    @POST("api/auth/create")
     Call<ResultRegister> create(@Body Register register);
 
 
 
-    @GET("/public/api/auth/user")
+    @GET("api/auth/user")
     Call<ResponseBody> getSecret(@Header("Authorization") String access_token);
 
+/*
     @GET("/public/api/products")
     Call<ResultProduct> getProduct (@Body ResultProduct resultProduct);
+*/
+
+    @GET("api/products")
+    Call<Products> getProducts();
+
+    @GET("api/products")
+    Call<Products> getSearchProducts(
+            @Query("query") String keyword
+
+    );
 
 
 }

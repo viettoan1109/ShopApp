@@ -62,8 +62,9 @@ public class ViewsSliderActivity extends AppCompatActivity {
         layouts = new int[]{
                 R.layout.slide_one,
                 R.layout.slide_two,
-                R.layout.slide_three,
-                R.layout.slide_four};
+                R.layout.slide_three
+                //R.layout.slide_four
+                };
 
         mAdapter = new ViewsSliderAdapter();
         binding.viewPager.setAdapter(mAdapter);
