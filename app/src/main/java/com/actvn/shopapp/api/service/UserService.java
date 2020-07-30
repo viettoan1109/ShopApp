@@ -21,9 +21,8 @@ public interface UserService {
     @POST("/public/api/auth/create")
     Call<ResultRegister> create(@Body Register register);
 
-
-
     @GET("/public/api/auth/user")
     Call<ResponseBody> getSecret(@Header("Authorization") String access_token);
+
 
 }

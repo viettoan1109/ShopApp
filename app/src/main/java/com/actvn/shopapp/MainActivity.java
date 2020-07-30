@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
         vpgFace.setAdapter(viewPagerAdapter);
 
 
-
         vpgFace.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabFace));
         tabFace.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(vpgFace));
 
