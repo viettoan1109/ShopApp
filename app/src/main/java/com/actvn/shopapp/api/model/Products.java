@@ -1,4 +1,4 @@
 package com.actvn.shopapp.api.model;
 
-public class Images {
+public class Products {
 }
