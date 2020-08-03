@@ -12,14 +12,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.actvn.shopapp.R;
-import com.actvn.shopapp.api.model.Item;
-import com.squareup.picasso.Picasso;
+import com.actvn.shopapp.api.model.Data;
+import com.actvn.shopapp.fragment.StoreFragment;
+import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> {
-    private List<Item> itemList;
+    public static final String PRODUCT_URL = "http://app.baomoiday.net/public/";
+    private List<Data> datas;
     private Context context;
+
+    public StoreAdapter(List<Data> datas, Context context) {
+        this.datas = datas;
+        this.context = context;
+    }
+
 
     @NonNull
     @Override
@@ -31,15 +40,19 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Item item = itemList.get(position);
-        holder.txtName.setText(item.getName());
-        holder.txtCost.setText(item.getCost());
-        Picasso.get().load(item.getImge()).into(holder.imgItem);
+        Data data = datas.get(position);
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        holder.txtName.setText(String.valueOf(data.getDescriptions().get(1).getName()));
+        holder.txtCost.setText(String.valueOf(decimalFormat.format(data.getCost())+ "VNĐ"));
+        Glide.with(context).load((PRODUCT_URL + data.getImage()))
+                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_launcher)
+                .into(holder.imgItem);
     }
 
     @Override
     public int getItemCount() {
-        return itemList.size();
+        return datas.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

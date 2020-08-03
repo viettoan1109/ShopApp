@@ -64,6 +64,8 @@ public class RegisterActivity extends AppCompatActivity {
         String address = edtAdressR.getText().toString().trim();
         String phone = edtPhoneR.getText().toString().trim();
         Register register = new Register(firtname,email,pass,address,phone);
+
+
         Call<ResultRegister> call = userServic.create(register);
         call.enqueue(new Callback<ResultRegister>() {
             @Override

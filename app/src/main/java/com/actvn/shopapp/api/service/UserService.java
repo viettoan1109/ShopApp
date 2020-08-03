@@ -2,6 +2,7 @@ package com.actvn.shopapp.api.service;
 
 
 import com.actvn.shopapp.api.model.Login;
+import com.actvn.shopapp.api.model.Products;
 import com.actvn.shopapp.api.model.Register;
 import com.actvn.shopapp.api.model.ResultLogin;
 import com.actvn.shopapp.api.model.ResultRegister;
@@ -24,5 +25,6 @@ public interface UserService {
     @GET("/public/api/auth/user")
     Call<ResponseBody> getSecret(@Header("Authorization") String access_token);
 
-
+    @GET("api/products")
+    Call<Products> getProducts();
 }
