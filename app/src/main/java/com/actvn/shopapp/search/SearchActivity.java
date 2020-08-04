@@ -81,7 +81,7 @@ public class SearchActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewSearch);
         recyclerView.setHasFixedSize(true);
-        //layoutManager = new LinearLayoutManager(SearchActivity.this);
+        layoutManager = new LinearLayoutManager(SearchActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
        //recyclerView.setNestedScrollingEnabled(true);
