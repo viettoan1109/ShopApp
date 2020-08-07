@@ -69,9 +69,7 @@ public class StoreFragment extends Fragment {
         return view;
     }
 
-
-
-    private void initViewss(){
+    private void initViewss() {
         storeAdapter = new StoreAdapter(datas, getContext());
 
         viewFlipper = view.findViewById(R.id.viewFlipper);
