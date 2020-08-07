@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ShopApp</string>
+
+    <string name="title_shop">Shop</string>
+    <string name="title_gifts">Gifts</string>
+    <string name="title_cart">Cart</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="start">GOT IT</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+
+    <string name="search_hint">Search Here...</string>
+
+
+</resources>
