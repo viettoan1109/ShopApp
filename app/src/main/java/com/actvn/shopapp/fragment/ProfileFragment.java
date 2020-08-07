@@ -12,7 +12,8 @@ import androidx.fragment.app.Fragment;
 import com.actvn.shopapp.R;
 
 
-public class ProfileFragment extends Fragment {
+public class
+ProfileFragment extends Fragment {
 
     @Nullable
     @Override
