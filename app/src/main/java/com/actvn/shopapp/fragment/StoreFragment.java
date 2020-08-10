@@ -55,6 +55,7 @@ public class StoreFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         view = inflater.inflate(R.layout.fragment_store, container, false);
 
         OkHttpClient.Builder client = new OkHttpClient.Builder();
@@ -64,14 +65,14 @@ public class StoreFragment extends Fragment {
 
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(ConstApp.PRODUCT_URL)
-                .client(client.build())
-                .addConverterFactory(GsonConverterFactory.create());
+                .client(client.build()).addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
         userService = retrofit.create(UserService.class);
         denzcokunView();
         initViewss();
         loadItem();
+
         return view;
     }
 
