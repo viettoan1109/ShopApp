@@ -1,4 +1,4 @@
-package com.actvn.shopapp.login.logout;
+package com.actvn.shopapp.activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

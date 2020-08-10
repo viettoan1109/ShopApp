@@ -1,4 +1,4 @@
-package com.actvn.shopapp.register;
+package com.actvn.shopapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,10 +13,7 @@ import com.actvn.shopapp.R;
 import com.actvn.shopapp.api.model.Register;
 import com.actvn.shopapp.api.model.ResultRegister;
 import com.actvn.shopapp.api.service.UserService;
-import com.actvn.shopapp.login.LoginActivity;
 import com.actvn.shopapp.utils.ConstApp;
-
-import org.jetbrains.annotations.NotNull;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

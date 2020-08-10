@@ -1,4 +1,4 @@
-package com.actvn.shopapp.login;
+package com.actvn.shopapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +16,6 @@ import com.actvn.shopapp.R;
 import com.actvn.shopapp.api.model.Login;
 import com.actvn.shopapp.api.model.ResultLogin;
 import com.actvn.shopapp.api.service.UserService;
-import com.actvn.shopapp.login.logout.LogoutActivity;
 import com.actvn.shopapp.utils.ConstApp;
 import com.actvn.shopapp.utils.ShareStoreUtils;
 

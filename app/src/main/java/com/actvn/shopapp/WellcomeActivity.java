@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.actvn.shopapp.register.RegisterActivity;
+import com.actvn.shopapp.activity.RegisterActivity;
 
 public class WellcomeActivity extends AppCompatActivity {
 

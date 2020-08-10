@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/group_menu">
+        <item
+            android:id="@+id/nav_item_four"
+            android:icon="@drawable/ic_icon_homepage"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_item_five"
+            android:icon="@drawable/ic_icon_storelocator"
+            android:title="Store Locator" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_item_one"
+                android:icon="@drawable/ic_icon_help"
+                android:title="Terms and Conditions" />
+            <item
+                android:id="@+id/nav_item_two"
+                android:icon="@drawable/ic_icon_term"
+                android:title="Help" />
+            <item
+                android:id="@+id/nav_item_three"
+                android:icon="@drawable/ic_icon_question"
+                android:title="Got a Question" />
+        </menu>
+    </item>
+
+    <group>
+        <item tools:ignore="MenuTitle"
+            android:title="Logout"
+            android:icon="@drawable/ic_logout"
+            android:id="@+id/nav_item_six" />
+    </group>
+</menu>

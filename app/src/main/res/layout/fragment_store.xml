@@ -6,43 +6,27 @@
     android:layout_height="match_parent"
     android:background="#ECEFF3">
 
-    <ViewFlipper
-        android:id="@+id/viewFlipper"
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/slider"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="210dp"
+        app:auto_cycle="true"
+        app:corner_radius="5"
+        app:delay="0"
+        app:period="1000"
+        tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/food2" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ty" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/food1" />
-    </ViewFlipper>
-
+    </com.denzcoskun.imageslider.ImageSlider>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/layout_bottom"
+        android:background="#FFFFFF"
         android:elevation="20dp"
         android:padding="15dp"
         android:weightSum="4"
-        app:layout_constraintTop_toBottomOf="@id/viewFlipper"
+        app:layout_constraintTop_toBottomOf="@id/slider"
         tools:ignore="MissingConstraints">
 
         <androidx.cardview.widget.CardView
@@ -66,9 +50,9 @@
 
                 <ImageView
                     android:id="@+id/imgView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/meat"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/smartphone"
                     app:layout_constraintBottom_toBottomOf="@id/imgView1"
                     app:layout_constraintLeft_toLeftOf="@+id/imgView1"
                     app:layout_constraintRight_toRightOf="@id/imgView1"
@@ -78,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Meat"
+                    android:text="Phone"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -106,9 +90,9 @@
 
                 <ImageView
                     android:id="@+id/imgView22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/fish"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/laptop"
                     app:layout_constraintBottom_toBottomOf="@id/imgView2"
                     app:layout_constraintLeft_toLeftOf="@+id/imgView2"
                     app:layout_constraintRight_toRightOf="@id/imgView2"
@@ -118,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Fish"
+                    android:text="Laptop"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -146,9 +130,9 @@
 
                 <ImageView
                     android:id="@+id/imgView33"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/fruit"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/tablet"
                     app:layout_constraintBottom_toBottomOf="@id/imgView3"
                     app:layout_constraintLeft_toLeftOf="@+id/imgView3"
                     app:layout_constraintRight_toRightOf="@id/imgView3"
@@ -158,7 +142,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Fruits"
+                    android:text="Tablet"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -186,9 +170,9 @@
 
                 <ImageView
                     android:id="@+id/imgView44"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/vegetable"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/headphones"
                     app:layout_constraintBottom_toBottomOf="@id/imgView4"
                     app:layout_constraintLeft_toLeftOf="@+id/imgView4"
                     app:layout_constraintRight_toRightOf="@id/imgView4"
@@ -198,7 +182,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Vegetables"
+                    android:text="Headphone"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
@@ -212,11 +196,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
-        android:text="Grocery App Deals"
+        android:layout_marginTop="20dp"
+        android:text="Feeature Products"
         android:textColor="#272A3F"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textSize="26sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
         tools:ignore="MissingConstraints" />
@@ -225,7 +208,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle">
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,7 +44,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         Data data = datas.get(position);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.txtName.setText(String.valueOf(data.getDescriptions().get(1).getName()));
-        holder.txtCost.setText(String.valueOf(decimalFormat.format(data.getCost())+ "VNĐ"));
+        holder.txtCost.setText(String.valueOf(decimalFormat.format(data.getCost())+ "₫"));
         Glide.with(context).load((PRODUCT_URL + data.getImage()))
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
@@ -59,6 +60,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         ImageView imgItem;
         TextView txtName;
         TextView txtCost;
+        Button btnView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +68,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
             imgItem = itemView.findViewById(R.id.imgItem);
             txtName = itemView.findViewById(R.id.txtName);
             txtCost = itemView.findViewById(R.id.txtCost);
+            btnView = itemView.findViewById(R.id.btnView);
         }
     }
 
