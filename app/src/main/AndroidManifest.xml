@@ -17,7 +17,11 @@
         android:hardwareAccelerated="false"
         android:theme="@style/AppTheme">
         <activity android:name=".DetailActivity"></activity>
+<<<<<<< HEAD
 
+=======
+        <activity android:name=".search.SearchActivity" />
+>>>>>>> 771aa5f0c751da573f50668a1700ba9ee39563e2
         <activity android:name=".register.RegisterActivity" />
         <activity android:name=".login.logout.LogoutActivity" />
         <activity android:name=".login.LoginActivity" />
@@ -41,12 +45,15 @@
             </intent-filter>
         </activity>
 
+<<<<<<< HEAD
         <activity android:name=".search.SearchActivity" >
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
 
+=======
+>>>>>>> 771aa5f0c751da573f50668a1700ba9ee39563e2
         <provider
             android:name=".search.SearchSuggestions"
             android:authorities="com.actvn.shopapp.search.SearchSuggestions" />

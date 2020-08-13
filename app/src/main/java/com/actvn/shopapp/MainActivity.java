@@ -85,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.mnNotify:
+                Fragment fragment = new NotifyFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(android.R.id.content, fragment)
+
+                        .commit();
                 break;
         }
         return super.onOptionsItemSelected(item);
