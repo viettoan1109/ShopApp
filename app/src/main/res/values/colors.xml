@@ -14,12 +14,6 @@
 
     <!-- Screens background slider color-->
     <color name="bg_screen">#29C17E</color>
-<<<<<<< HEAD
-=======
-<!--    <color name="bg_screen2">#20d2bb</color>
-    <color name="bg_screen3">#3395ff</color>
-    <color name="bg_screen4">#c873f4</color>-->
->>>>>>> 771aa5f0c751da573f50668a1700ba9ee39563e2
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#14a895</color>
