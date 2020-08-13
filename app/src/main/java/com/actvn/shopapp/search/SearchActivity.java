@@ -13,9 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.SearchRecentSuggestions;
+import com.actvn.shopapp.search.SearchSuggestions;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.actvn.shopapp.R;
@@ -56,7 +62,6 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
 
-
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -84,7 +89,7 @@ public class SearchActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(SearchActivity.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
-       //recyclerView.setNestedScrollingEnabled(true);
+        //recyclerView.setNestedScrollingEnabled(true);
         recyclerView.setAdapter(searchAdapter);
 
         toolbarSearch = findViewById(R.id.toolbarSearch);
@@ -108,7 +113,18 @@ public class SearchActivity extends AppCompatActivity {
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setQueryHint("Search Here!!!");
+
+        /*Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            SearchRecentSuggestions searchRecentSuggestions = new SearchRecentSuggestions(
+                    this,
+                    SearchSuggestions.AUTHORITY,
+                    SearchSuggestions.MODE);
+
+            searchRecentSuggestions.saveRecentQuery(query, null);
+        }*/
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -148,12 +164,12 @@ public class SearchActivity extends AppCompatActivity {
             }
         });*/
         Call<Products> call;
-        if (keyword.length() > 0){
+        if (keyword.length() > 0) {
             call = userService.getSearchProducts(keyword);
-            Toast.makeText(SearchActivity.this, keyword, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(SearchActivity.this, keyword, Toast.LENGTH_SHORT).show();
 
         } else {
-          call = userService.getProducts();
+            call = userService.getProducts();
             Toast.makeText(SearchActivity.this, "No Result", Toast.LENGTH_SHORT).show();
 
         }
@@ -161,8 +177,8 @@ public class SearchActivity extends AppCompatActivity {
         call.enqueue(new Callback<Products>() {
             @Override
             public void onResponse(Call<Products> call, Response<Products> response) {
-                if (response.isSuccessful() && response.body().getData() != null){
-                    if (!datas.isEmpty()){
+                if (response.isSuccessful() && response.body().getData() != null) {
+                    if (!datas.isEmpty()) {
                         datas.clear();
                     }
                     datas = response.body().getData();

@@ -17,6 +17,7 @@ import com.actvn.shopapp.api.model.Data;
 import com.actvn.shopapp.api.model.Description;
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,10 +45,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Data data = datas.get(position);
-      //Description description = descriptions.get(position);
-      // holder.txtTitle.setText(String.valueOf(description.getName()));
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.txtTitle.setText(String.valueOf(data.getDescriptions().get(1).getName()));
-       holder.txtCost.setText(String.valueOf(data.getPrice()));
+        holder.txtCost.setText(String.valueOf(decimalFormat.format(data.getCost())+ " đ"));
+
         Glide.with(context).load(String.valueOf(BASE_URL + data.getImage()))
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)

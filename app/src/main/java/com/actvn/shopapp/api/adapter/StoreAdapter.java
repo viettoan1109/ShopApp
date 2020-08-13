@@ -34,7 +34,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dong_item,null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product,null);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -44,7 +44,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         Data data = datas.get(position);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.txtName.setText(String.valueOf(data.getDescriptions().get(1).getName()));
-        holder.txtCost.setText(String.valueOf(decimalFormat.format(data.getCost())+ "VNĐ"));
+        holder.txtCost.setText(String.valueOf(decimalFormat.format(data.getCost())+ " đ"));
         Glide.with(context).load((BASE_URL + data.getImage()))
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
@@ -64,8 +64,8 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgItem = itemView.findViewById(R.id.imgItem);
-            txtName = itemView.findViewById(R.id.txtName);
+            imgItem = itemView.findViewById(R.id.img);
+            txtName = itemView.findViewById(R.id.txtTitle);
             txtCost = itemView.findViewById(R.id.txtCost);
         }
     }
