@@ -43,19 +43,16 @@ public class StoreFragment extends Fragment {
     private CardView cardViewFish;
     private CardView cardViewFruits;
     private CardView cardViewVegetable;
-    private ViewFlipper viewFlipper;
     private View view;
     private StoreAdapter storeAdapter;
     private UserService userService;
     private RecyclerView recyclerView;
     private List<Data> datas = new ArrayList<>();
-    private Products products;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         view = inflater.inflate(R.layout.fragment_store, container, false);
 
         OkHttpClient.Builder client = new OkHttpClient.Builder();
@@ -76,6 +73,7 @@ public class StoreFragment extends Fragment {
         return view;
     }
 
+    // Slider
     private void denzcokunView(){
         ImageSlider imageSlider = view.findViewById(R.id.slider);
         List<SlideModel> slideModels = new ArrayList<>();
@@ -145,10 +143,7 @@ public class StoreFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    private void GetNewItem() {
-
-    }
-
+    // Load Feature Product
     private void loadItem() {
         Call<Products> call = userService.getProducts();
 

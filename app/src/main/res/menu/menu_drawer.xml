@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
     <group android:id="@+id/group_menu">
         <item
-            android:id="@+id/nav_item_four"
-            android:icon="@drawable/ic_icon_homepage"
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
             android:title="Home" />
         <item
-            android:id="@+id/nav_item_five"
+            android:id="@+id/nav_locator"
             android:icon="@drawable/ic_icon_storelocator"
             android:title="Store Locator" />
     </group>
@@ -15,24 +16,25 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_item_one"
-                android:icon="@drawable/ic_icon_help"
+                android:id="@+id/nav_term"
+                android:icon="@drawable/ic_baseline_assignment_24"
                 android:title="Terms and Conditions" />
             <item
-                android:id="@+id/nav_item_two"
+                android:id="@+id/nav_help"
                 android:icon="@drawable/ic_icon_term"
                 android:title="Help" />
             <item
-                android:id="@+id/nav_item_three"
-                android:icon="@drawable/ic_icon_question"
+                android:id="@+id/nav_question"
+                android:icon="@drawable/ic_baseline_question_answer_24"
                 android:title="Got a Question" />
         </menu>
     </item>
 
     <group>
-        <item tools:ignore="MenuTitle"
-            android:title="Logout"
+        <item
+            android:id="@+id/nav_item_six"
             android:icon="@drawable/ic_logout"
-            android:id="@+id/nav_item_six" />
+            android:title="Logout"
+            tools:ignore="MenuTitle" />
     </group>
 </menu>
