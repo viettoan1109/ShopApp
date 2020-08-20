@@ -4,42 +4,32 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
-import com.actvn.shopapp.databinding.ActivityViewsSliderBinding;
 import com.actvn.shopapp.fragment.CartFragment;
-import com.actvn.shopapp.fragment.FavouriteFragment;
 import com.actvn.shopapp.fragment.ProfileFragment;
 import com.actvn.shopapp.fragment.StoreFragment;
-import com.actvn.shopapp.login.LoginActivity;
+import com.actvn.shopapp.login.logout.LogoutActivity;
 import com.actvn.shopapp.search.SearchActivity;
 import com.actvn.shopapp.search.SearchSuggestions;
-import com.actvn.shopapp.views.ViewsSliderActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.actvn.shopapp.utils.ConstApp;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager vpgFace;
     private TabLayout tabFace;
+    private NestedScrollView scrollView;
 
     //private ActivityViewsSliderBinding binding;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         actionToolbar();
         addControl();
         setIconTablayout();
-       //search();
+        setScrollView();
+        //search();
     }
 
     @Override
@@ -85,11 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.mnNotify:
-                Fragment fragment = new NotifyFragment();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(android.R.id.content, fragment)
-
-                        .commit();
+                Intent intent1 = new Intent(getApplicationContext(), LogoutActivity.class);
+                startActivity(intent1);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -99,10 +87,29 @@ public class MainActivity extends AppCompatActivity {
         vpgFace = findViewById(R.id.vpgFace);
         tabFace = findViewById(R.id.tabFace);
         toolbar = findViewById(R.id.toolbarMain);
+        scrollView = findViewById(R.id.scrollViewStore);
         drawerLayout = findViewById(R.id.drawerLayout);
+
     }
 
-    private void search(){
+    private void setScrollView() {
+/*
+        scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY > scrollX){
+                    toolbar.setVisibility(View.GONE);
+                } else {
+                    toolbar.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+*/
+
+    }
+
+    private void search() {
 
         Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -136,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
 
         vpgFace.setAdapter(viewPagerAdapter);
-
+        //   vpgFace.setPageTransformer(true, new DepthPageTransformer());
 
         vpgFace.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabFace));
         tabFace.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(vpgFace));
@@ -151,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
+                        toolbar.setVisibility(View.VISIBLE);
                         toolbar.setTitle("Store");
                         tabFace.getTabAt(0).getIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
                         tabFace.getTabAt(1).getIcon().setColorFilter(Color.parseColor("#1F915F"), PorterDuff.Mode.SRC_IN);
@@ -158,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case 1:
+                        toolbar.setVisibility(View.GONE);
                         toolbar.setTitle("Cart");
                         tabFace.getTabAt(0).getIcon().setColorFilter(Color.parseColor("#1F915F"), PorterDuff.Mode.SRC_IN);
                         tabFace.getTabAt(1).getIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
@@ -165,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case 2:
+                        toolbar.setVisibility(View.GONE);
                         toolbar.setTitle("Profile");
                         tabFace.getTabAt(0).getIcon().setColorFilter(Color.parseColor("#1F915F"), PorterDuff.Mode.SRC_IN);
                         tabFace.getTabAt(1).getIcon().setColorFilter(Color.parseColor("#1F915F"), PorterDuff.Mode.SRC_IN);
@@ -197,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
             super(fm, behavior);
         }
 
+        public Fragment[] fragments = new Fragment[3];
 
         @Override
         public Fragment getItem(int position) {
@@ -221,6 +232,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             return 3;
+        }
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            Fragment createdFragment = (Fragment) super.instantiateItem(container, position);
+            fragments[position] = createdFragment;
+            return createdFragment;
         }
     }
 

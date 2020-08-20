@@ -22,6 +22,7 @@
         <activity android:name=".login.logout.LogoutActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".WellcomeActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />

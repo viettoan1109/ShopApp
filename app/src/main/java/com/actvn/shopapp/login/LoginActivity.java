@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import com.actvn.shopapp.R;
 import com.actvn.shopapp.api.model.Login;
 import com.actvn.shopapp.api.model.ResultLogin;
 import com.actvn.shopapp.api.service.UserService;
+import com.actvn.shopapp.fragment.ProfileFragment;
 import com.actvn.shopapp.login.logout.LogoutActivity;
 import com.actvn.shopapp.register.RegisterActivity;
 import com.actvn.shopapp.utils.ConstApp;
@@ -36,7 +38,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText edtEmail, edtPass;
     private TextView txtDismiss;
     private TextView txtSignUp;
+    private ImageView imgClose;
     private Button btnSignIN;
+
+    private ProfileFragment profileFragment;
 
     LinearLayout lnWrong;
 
@@ -44,10 +49,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // neu token khac null thi chay toi main
-        if (ShareStoreUtils.getToken(this) != null) {
+        /*if (ShareStoreUtils.getToken(this) != null) {
             startMainActivity();
             return;
-        }
+        }*/
         setContentView(R.layout.activity_login);
         // doan nay tim hieu roi note lai
         OkHttpClient.Builder client = new OkHttpClient.Builder();
@@ -71,13 +76,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edtPass = (EditText) findViewById(R.id.edtPass);
         btnSignIN = (Button) findViewById(R.id.btnSignIN_lo);
         txtSignUp = findViewById(R.id.txtSignUp);
+        imgClose = findViewById(R.id.imgClose);
 
         txtDismiss = findViewById(R.id.txtDismiss);
         lnWrong = findViewById(R.id.lnWrong);
 
+        profileFragment = new ProfileFragment();
+
         btnSignIN.setOnClickListener(this);
         txtSignUp.setOnClickListener(this);
         txtDismiss.setOnClickListener(this);
+        imgClose.setOnClickListener(this);
     }
 
     public void login() {
@@ -128,6 +137,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.txtSignUp:
                 Intent intent = new Intent(this, RegisterActivity.class);
                 startActivity(intent);
+                break;
+
+            case R.id.imgClose:
+                onBackPressed();
                 break;
         }
     }

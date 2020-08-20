@@ -7,6 +7,7 @@ import com.actvn.shopapp.api.model.Products;
 import com.actvn.shopapp.api.model.Register;
 import com.actvn.shopapp.api.model.ResultLogin;
 import com.actvn.shopapp.api.model.ResultRegister;
+import com.actvn.shopapp.api.model.User;
 
 import java.util.List;
 
@@ -27,14 +28,15 @@ public interface UserService {
     Call<ResultRegister> create(@Body Register register);
 
 
-
     @GET("api/auth/user")
     Call<ResponseBody> getSecret(@Header("Authorization") String access_token);
 
-/*
-    @GET("/public/api/products")
-    Call<ResultProduct> getProduct (@Body ResultProduct resultProduct);
-*/
+    /*
+        @GET("/public/api/products")
+        Call<ResultProduct> getProduct (@Body ResultProduct resultProduct);
+    */
+    @GET("api/auth/user")
+    Call<User> getUser();
 
     @GET("api/products")
     Call<Products> getProducts();

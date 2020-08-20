@@ -25,6 +25,7 @@
             app:closeIcon="@drawable/ic_baseline_close_24"
             app:iconifiedByDefault="false"
             app:queryHint="Search"
+            android:textColorHint="@color/white"
             app:searchIcon="@null" />
 
     </androidx.appcompat.widget.Toolbar>
