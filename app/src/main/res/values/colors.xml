@@ -9,6 +9,8 @@
     <color name="grey">#6E7989</color>
     <color name="layout_bellow">#F4F7FA</color>
     <color name="gray_edittext">#D8DAE0</color>
+    <color name="gray">#EAECF1</color>
+    <color name="black">#000000</color>
 
     <color name="colorTextPrimary">#ffffff</color>
 

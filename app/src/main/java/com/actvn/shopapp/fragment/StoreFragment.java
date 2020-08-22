@@ -1,5 +1,6 @@
 package com.actvn.shopapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.actvn.shopapp.R;
 import com.actvn.shopapp.SearchActivity;
+import com.actvn.shopapp.activity.PhoneActivity;
 import com.actvn.shopapp.api.adapter.StoreAdapter;
 import com.actvn.shopapp.api.model.Data;
 import com.actvn.shopapp.api.model.Products;
@@ -109,7 +111,8 @@ public class StoreFragment extends Fragment {
         cardViewMeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), PhoneActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -136,6 +139,9 @@ public class StoreFragment extends Fragment {
         });
     }
 
+    private void GetNewItem() {
+
+    }
 
 
     @Override

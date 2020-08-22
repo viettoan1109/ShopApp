@@ -1,19 +1,14 @@
 package com.actvn.shopapp;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -24,14 +19,13 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import com.actvn.shopapp.activity.HelpActivity;
+import com.actvn.shopapp.activity.LocatorActivity;
 import com.actvn.shopapp.fragment.CartFragment;
-import com.actvn.shopapp.fragment.ContentFragment;
-import com.actvn.shopapp.fragment.HelpFragment;
 import com.actvn.shopapp.fragment.ProfileFragment;
-import com.actvn.shopapp.fragment.QuestionFragment;
+import com.actvn.shopapp.activity.QuestionActivity;
 import com.actvn.shopapp.fragment.StoreFragment;
-import com.actvn.shopapp.fragment.StoreLocatorFragment;
-import com.actvn.shopapp.fragment.TermsFragment;
+import com.actvn.shopapp.activity.TermActivity;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -40,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private ViewPager vpgFace;
     private TabLayout tabFace;
-    private QuestionFragment questionFragment;
+    private QuestionActivity questionFragment;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
 
@@ -211,28 +205,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // Set onclick on navigationview
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-       /* switch (menuItem.getItemId()) {
+        switch (menuItem.getItemId()) {
             case R.id.nav_home:
-                Toast.makeText(getApplicationContext(),"Hellllllo",Toast.LENGTH_SHORT).show();
-                getSupportFragmentManager().beginTransaction().replace(R.id.vpgFace, new StoreFragment()).commit();
+                Intent itHome = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(itHome);
                 break;
             case R.id.nav_locator:
-                getSupportFragmentManager().beginTransaction().replace(R.id.vpgFace, new StoreLocatorFragment()).commit();
+                Intent itLocator = new Intent(getApplicationContext(), LocatorActivity.class);
+                startActivity(itLocator);
                 break;
             case R.id.nav_term:
-                getSupportFragmentManager().beginTransaction().replace(R.id.vpgFace, new TermsFragment()).commit();
+                Intent itTerm = new Intent(getApplicationContext(), TermActivity.class);
+                startActivity(itTerm);
                 break;
             case R.id.nav_help:
-                getSupportFragmentManager().beginTransaction().replace(R.id.vpgFace, new HelpFragment()).commit();
+                Intent itHelp = new Intent(getApplicationContext(), HelpActivity.class);
+                startActivity(itHelp);
                 break;
             case R.id.nav_question:
-                //getSupportFragmentManager().beginTransaction().add(R.id.nav_question,questionFragment,"Fragment").commit();
-                getSupportFragmentManager().beginTransaction().replace(R.id.vpgFace, new QuestionFragment()).commit();
+                Intent itQuestion = new Intent(getApplicationContext(), QuestionActivity.class);
+                startActivity(itQuestion);
                 break;
         }
-
-        drawerLayout.closeDrawer(GravityCompat.START);*/
-        //displaySelectedScreen(menuItem.getItemId());
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
